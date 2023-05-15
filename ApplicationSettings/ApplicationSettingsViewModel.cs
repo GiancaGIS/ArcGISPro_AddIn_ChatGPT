@@ -274,8 +274,6 @@ namespace AddInAskChatGPT
                 ModuleChatGPT.Bot.ClearChat();
             }
 
-            
-
             return Task.FromResult(0);
         }
 
@@ -320,17 +318,17 @@ namespace AddInAskChatGPT
             models = new ObservableCollection<Model>
             {
                 OpenAI_API.Models.Model.DefaultModel,
-                OpenAI_API.Models.Model.AdaText,
-                OpenAI_API.Models.Model.BabbageText,
+                //OpenAI_API.Models.Model.AdaText,
+                //OpenAI_API.Models.Model.BabbageText,
                 OpenAI_API.Models.Model.ChatGPTTurbo,
-                OpenAI_API.Models.Model.ChatGPTTurbo0301,
-                OpenAI_API.Models.Model.CurieText,
-                OpenAI_API.Models.Model.CushmanCode,
-                OpenAI_API.Models.Model.DavinciCode,
-                OpenAI_API.Models.Model.GPT4,
-                OpenAI_API.Models.Model.GPT4_32k_Context,
-                OpenAI_API.Models.Model.TextModerationLatest,
-                OpenAI_API.Models.Model.TextModerationStable
+                //OpenAI_API.Models.Model.ChatGPTTurbo0301,
+                //OpenAI_API.Models.Model.CurieText,
+                //OpenAI_API.Models.Model.CushmanCode,
+                //OpenAI_API.Models.Model.DavinciCode,
+                OpenAI_API.Models.Model.GPT4
+                //OpenAI_API.Models.Model.GPT4_32k_Context,
+                //OpenAI_API.Models.Model.TextModerationLatest,
+                //OpenAI_API.Models.Model.TextModerationStable
             };
 
             selectedModel = OpenAI_API.Models.Model.DefaultModel;
@@ -370,9 +368,6 @@ namespace AddInAskChatGPT
                 }
             }
             
-
-
-
             // keep track of the original values (used for comparison when saving)
             previousOpenAI_api_key = OpenAI_api_key;
             previousOpenAI_Organization = OpenAI_Organization;
@@ -388,9 +383,7 @@ namespace AddInAskChatGPT
             return Task.FromResult(0);
         }
 
-        
-
-        
+             
     }
 
 }
