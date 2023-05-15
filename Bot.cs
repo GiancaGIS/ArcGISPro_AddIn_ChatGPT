@@ -56,7 +56,7 @@ namespace AddInAskChatGPT
 
         public OpenAIAPI Api
         {
-            get;set; 
+            get; set;
         }
 
 
@@ -118,9 +118,9 @@ namespace AddInAskChatGPT
                 return;
             }
 
-            
-            
-            
+
+
+
 
             chat = Api.Chat.CreateConversation();
 
