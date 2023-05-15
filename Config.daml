@@ -23,7 +23,7 @@
       
       <controls>
         
-        <button id="Dockpane_ChatGPTDockpane_ShowButton" keytip="CH" caption="Ask ChatGPT" className="ChatGPTDockpane_ShowButton" loadOnClick="true" smallImage="Images\ChatGPT16.png" largeImage="Images\ChatGPT32.png">
+        <button id="Dockpane_ChatGPTDockpane_ShowButton" keytip="CH" caption="Ask ChatGPT" className="ChatGPTDockpane_ShowButton" loadOnClick="true" smallImage="Images\ChatGPT32.png" largeImage="Images\ChatGPT32.png">
           <tooltip heading="ChatGPT">
 			  Ask ChatGPT which interacts in a conversational way<disabledText />
 		  </tooltip>
