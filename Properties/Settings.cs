@@ -1,4 +1,4 @@
-﻿namespace PAMChatGPT.Properties
+﻿namespace AddInAskChatGPT.Properties
 {
     internal sealed partial class Settings
     {

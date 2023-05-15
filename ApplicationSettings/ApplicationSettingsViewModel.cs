@@ -1,15 +1,15 @@
 ﻿using ArcGIS.Desktop.Framework.Contracts;
 using OpenAI_API;
 using OpenAI_API.Models;
-using PAMChatGPT.Enums;
-using PAMChatGPT.Extensions;
-using PAMChatGPT.Properties;
+using AddInAskChatGPT.Enums;
+using AddInAskChatGPT.Extensions;
+using AddInAskChatGPT.Properties;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 
-namespace PAMChatGPT
+namespace AddInAskChatGPT
 {
     internal class ApplicationSettingsViewModel : Page
     {

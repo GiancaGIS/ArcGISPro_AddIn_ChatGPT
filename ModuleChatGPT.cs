@@ -1,7 +1,7 @@
 ﻿using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Contracts;
 
-namespace PAMChatGPT
+namespace AddInAskChatGPT
 {
     internal class ModuleChatGPT : Module
     {
@@ -10,7 +10,7 @@ namespace PAMChatGPT
         /// <summary>
         /// Retrieve the singleton instance to this module here
         /// </summary>
-        public static ModuleChatGPT Current => _this ??= (ModuleChatGPT)FrameworkApplication.FindModule("PAMChatGPT_Module");
+        public static ModuleChatGPT Current => _this ??= (ModuleChatGPT)FrameworkApplication.FindModule("AddInAskChatGPT_Module");
 
         public static Bot Bot => Bot.GetBot();
 

@@ -2,7 +2,7 @@
 using System.Windows.Input;
 
 
-namespace PAMChatGPT
+namespace AddInAskChatGPT
 {
     /// <summary>
     /// Interaction logic for ApplicationSettingsView.xaml

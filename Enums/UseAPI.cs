@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace PAMChatGPT.Enums
+namespace AddInAskChatGPT.Enums
 {
     internal enum UseAPI
     {

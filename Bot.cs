@@ -1,15 +1,15 @@
 ﻿using ArcGIS.Desktop.Framework.Dialogs;
 using OpenAI_API;
 using OpenAI_API.Chat;
-using PAMChatGPT.Enums;
-using PAMChatGPT.Extensions;
-using PAMChatGPT.Properties;
+using AddInAskChatGPT.Enums;
+using AddInAskChatGPT.Extensions;
+using AddInAskChatGPT.Properties;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PAMChatGPT
+namespace AddInAskChatGPT
 {
     public class Bot
     {

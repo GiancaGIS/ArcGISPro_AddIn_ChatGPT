@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PAMChatGPT.Extensions
+namespace AddInAskChatGPT.Extensions
 {
     public static class StringEnumExtension
     {

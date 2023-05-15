@@ -1,22 +1,22 @@
-﻿<ArcGIS defaultAssembly="PAMChatGPT.dll" defaultNamespace="PAMChatGPT" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
+﻿<ArcGIS defaultAssembly="AddInAskChatGPT.dll" defaultNamespace="AddInAskChatGPT" xmlns="http://schemas.esri.com/DADF/Registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
   <AddInInfo id="{4e688f6f-f9ca-4e1a-8f6c-4e0c9c874631}" version="1.0.0" desktopVersion="3.1.41833">
-    <Name>ChatGPT</Name>
-    <Description>Ask ChatGPT</Description>
+    <Name>Ask ChatGPT</Name>
+    <Description>AddIn for using ChatGPT in ArcGIS Pro</Description>
     <Image>Images\AddinDesktop32.png</Image>
-    <Author>nicogis</Author>
-    <Company>Studio A&amp;T s.r.l.</Company>
-    <Date>13/03/2023</Date>
+    <Author>GiancaGIS forked from NicoGIS</Author>
+    <Company>GiancaGIS</Company>
+    <Date>15/05/2023</Date>
     <Subject>Framework</Subject>
     <!-- Note subject can be one or more of these topics:
                     Content, Framework, Editing, Geodatabase, Geometry, Geoprocessing, Layouts, Map Authoring, Map Exploration -->
   </AddInInfo>
   <modules>
-    <insertModule id="PAMChatGPT_Module" className="ModuleChatGPT" autoLoad="false" caption="Module1">
+    <insertModule id="AddInAskChatGPT_Module" className="ModuleChatGPT" autoLoad="false" caption="Module1">
       <!-- uncomment to have the control hosted on a separate tab-->
       <groups>
         <!-- comment this out if you have no controls on the Addin tab to avoid
               an empty group-->
-        <group id="PAMChatGPT_GroupChatGPT" caption="ChatGPT" keytip="CHS" appearsOnAddInTab="true">
+        <group id="AddInAskChatGPT_GroupChatGPT" caption="ChatGPT" keytip="CHS" appearsOnAddInTab="true">
           <button refID="Dockpane_ChatGPTDockpane_ShowButton" size="large" />
         </group>
       </groups>
@@ -39,7 +39,7 @@
   <propertySheets>
 	  
     <updateSheet refID="esri_core_optionsPropertySheet">
-      <insertPage id="esri_sdk_PropertyPageAppSettings_PAMChatGPT" caption="ChatGPT" className="ApplicationSettingsViewModel" group="Application">
+      <insertPage id="esri_sdk_PropertyPageAppSettings_AddInAskChatGPT" caption="ChatGPT" className="ApplicationSettingsViewModel" group="Application">
         <content className="ApplicationSettingsView" />
       </insertPage>
     </updateSheet>

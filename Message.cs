@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace PAMChatGPT
+namespace AddInAskChatGPT
 {
     public class Message : INotifyPropertyChanged
     {

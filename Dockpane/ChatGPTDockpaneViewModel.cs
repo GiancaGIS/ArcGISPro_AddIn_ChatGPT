@@ -2,7 +2,7 @@
 using ArcGIS.Desktop.Framework.Contracts;
 using System.Collections.ObjectModel;
 
-namespace PAMChatGPT
+namespace AddInAskChatGPT
 {
     public class ChatGPTDockpaneViewModel : DockPane
     {
