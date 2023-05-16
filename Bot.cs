@@ -1,6 +1,7 @@
 ﻿using AddInAskChatGPT.Enums;
 using AddInAskChatGPT.Extensions;
 using AddInAskChatGPT.Properties;
+using ArcGIS.Desktop.Framework;
 using OpenAI_API;
 using OpenAI_API.Chat;
 using System;
@@ -101,6 +102,15 @@ namespace AddInAskChatGPT
                     Text = ex.Message
                 });
             }
+            finally
+            {
+                FrameworkApplication.AddNotification(new Notification()
+                {
+                    Title = "AddIn Ask ChatGPT",
+                    Message = "Response available from ChatGPT",
+                    ImageUrl = @"pack://application:,,,/ArcGIS.Desktop.Resources;component/Images/LayerMasking32.png"
+                });
+            }
 
         }
 
@@ -121,7 +131,6 @@ namespace AddInAskChatGPT
                 throw new System.Security.Authentication.AuthenticationException();
 
             chat = Api.Chat.CreateConversation();
-
 
             if (string.Equals(Settings.Default.UseAPI, UseAPI.OpenAI.GetDescription(), StringComparison.InvariantCultureIgnoreCase))
             {
