@@ -1,13 +1,12 @@
-﻿using ArcGIS.Desktop.Framework.Dialogs;
-using OpenAI_API;
-using OpenAI_API.Chat;
-using AddInAskChatGPT.Enums;
+﻿using AddInAskChatGPT.Enums;
 using AddInAskChatGPT.Extensions;
 using AddInAskChatGPT.Properties;
+using OpenAI_API;
+using OpenAI_API.Chat;
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows.Forms;
+
 
 namespace AddInAskChatGPT
 {
@@ -21,7 +20,7 @@ namespace AddInAskChatGPT
         private static readonly object locker = new();
         public static Bot GetBot()
         {
-            if (instance == null)
+            if (instance is null)
             {
                 lock (locker)
                 {
@@ -34,7 +33,7 @@ namespace AddInAskChatGPT
 
         protected Bot()
         {
-            if (Settings.Default.UseAPI.ToLowerInvariant() == UseAPI.OpenAI.GetDescription().ToLowerInvariant())
+            if (string.Equals(Settings.Default.UseAPI, UseAPI.OpenAI.GetDescription(), StringComparison.InvariantCultureIgnoreCase))
             {
                 Api = new()
                 {
@@ -46,7 +45,7 @@ namespace AddInAskChatGPT
                     Api.Auth.OpenAIOrganization = Settings.Default.OpenAI_Organization;
                 }
             }
-            else if (Settings.Default.UseAPI.ToLowerInvariant() == UseAPI.OpenAI_Azure.GetDescription().ToLowerInvariant())
+            else if (string.Equals(Settings.Default.UseAPI, UseAPI.OpenAI_Azure.GetDescription(), StringComparison.InvariantCultureIgnoreCase))
             {
                 Api = OpenAIAPI.ForAzure(Settings.Default.OpenAIAzure_ResourceName, Settings.Default.OpenAIAzure_DeploymentId, Settings.Default.OpenAIAzure_api_key);
                 Api.ApiVersion = Settings.Default.OpenAIAzure_APIVersion;
@@ -118,14 +117,13 @@ namespace AddInAskChatGPT
                 return;
             }
 
-
-
-
+            if (this.Api is null)
+                throw new System.Security.Authentication.AuthenticationException();
 
             chat = Api.Chat.CreateConversation();
 
 
-            if (Settings.Default.UseAPI.ToLowerInvariant() == UseAPI.OpenAI.GetDescription().ToLowerInvariant())
+            if (string.Equals(Settings.Default.UseAPI, UseAPI.OpenAI.GetDescription(), StringComparison.InvariantCultureIgnoreCase))
             {
                 string modelName = Settings.Default.OpenAI_Model;
 
