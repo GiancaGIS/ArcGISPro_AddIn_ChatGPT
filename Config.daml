@@ -39,7 +39,7 @@
   <propertySheets>
 	  
     <updateSheet refID="esri_core_optionsPropertySheet">
-      <insertPage id="esri_sdk_PropertyPageAppSettings_AddInAskChatGPT" caption="ChatGPT" className="ApplicationSettingsViewModel" group="Application">
+      <insertPage id="esri_sdk_PropertyPageAppSettings_AddInAskChatGPT" caption="AddIn Ask ChatGPT" className="ApplicationSettingsViewModel" group="Application">
         <content className="ApplicationSettingsView" />
       </insertPage>
     </updateSheet>
