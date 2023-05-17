@@ -8,19 +8,20 @@ namespace AddInAskChatGPT
         
         public MessageFrom MessageFrom { get; set; }
 
-        string text = null;
+        private string _text = null;
+
         public string Text {
-            get { return text; }
+            get { return _text; }
             set
             {
-                text = value;
+                _text = value;
                 OnPropertyChanged();
             }
         }
        
         public string Result {
 
-            get 
+            get
             {
                 string c = "red";
                 if (MessageFrom == MessageFrom.Bot)
@@ -31,12 +32,8 @@ namespace AddInAskChatGPT
                 {
                     c = "green";
                 }
-                
-                
-                return $"%{{color:{c}}}***{MessageFrom}***%: {Text}"; 
-            
+                return $"%{{color:{c}}}***{MessageFrom}***%: {Text}";
             }
-                    
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
