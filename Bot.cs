@@ -73,20 +73,38 @@ namespace AddInAskChatGPT
                 });
 
                 chat.AppendUserInput(text);
-                string response = await chat.GetResponseFromChatbotAsync();
+                //string response = await chat.GetResponseFromChatbotAsync();
+
+                Guid guid = Guid.NewGuid();
 
                 Message message = new()
                 {
+                    Guid = guid,
                     MessageFrom = MessageFrom.Bot,
-                    Text = response
+                    Text = "..."
                 };
 
                 Messages.Add(message);
 
-                //await foreach (var res in chat.StreamResponseEnumerableFromChatbotAsync())
-                //{
-                //    message.Text += res;
-                //}
+                int counter = 0;
+
+                string text = string.Empty;
+
+                await foreach (string res in chat.StreamResponseEnumerableFromChatbotAsync())
+                {
+                    text += res;
+                    conter += 1;
+                    if (counter % 100 == 0)
+                    {
+                        Message item = this.Messages.FirstOrDefault(i => i.Guid.toString() == guid.toString());
+                        if (item != null)
+                        {
+                            item.Text = text;
+                        }
+                    }
+                }
+
+                //Messages.Add(message);
 
             }
             catch (System.Security.Authentication.AuthenticationException)
