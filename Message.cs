@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace AddInAskChatGPT
@@ -6,6 +7,8 @@ namespace AddInAskChatGPT
     public class Message : INotifyPropertyChanged
     {
         
+        public Guid Guid { get; set; }
+
         public MessageFrom MessageFrom { get; set; }
 
         private string _text = null;

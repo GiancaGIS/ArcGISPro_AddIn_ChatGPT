@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Contracts;
 
+
 namespace AddInAskChatGPT
 {
     internal class ModuleChatGPT : Module
