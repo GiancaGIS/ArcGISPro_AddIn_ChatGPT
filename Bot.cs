@@ -6,7 +6,11 @@ using OpenAI_API;
 using OpenAI_API.Chat;
 using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 
 namespace AddInAskChatGPT
@@ -16,6 +20,12 @@ namespace AddInAskChatGPT
         private Conversation chat = null;
 
         public ObservableCollection<Message> Messages { get; } = new ObservableCollection<Message>();
+
+        public event PropertyChangedEventHandler PropertyChanged; 
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
 
         private static Bot instance;
         private static readonly object locker = new();
@@ -33,7 +43,7 @@ namespace AddInAskChatGPT
         }
 
         protected Bot()
-        {
+        {           
             if (string.Equals(Settings.Default.UseAPI, UseAPI.OpenAI.GetDescription(), StringComparison.InvariantCultureIgnoreCase))
             {
                 Api = new()
@@ -60,7 +70,7 @@ namespace AddInAskChatGPT
         }
 
 
-        public async Task SendActivityAsync(string text)
+        public async Task SendActivityAsync(string userQuestion)
         {
             try
             {
@@ -69,10 +79,10 @@ namespace AddInAskChatGPT
                 Messages.Add(new Message
                 {
                     MessageFrom = MessageFrom.User,
-                    Text = text,
+                    Text = userQuestion,
                 });
 
-                chat.AppendUserInput(text);
+                chat.AppendUserInput(userQuestion);
                 //string response = await chat.GetResponseFromChatbotAsync();
 
                 Guid guid = Guid.NewGuid();
@@ -88,23 +98,20 @@ namespace AddInAskChatGPT
 
                 int counter = 0;
 
-                string text = string.Empty;
+                string text2 = string.Empty;
 
                 await foreach (string res in chat.StreamResponseEnumerableFromChatbotAsync())
                 {
-                    text += res;
-                    conter += 1;
+                    text2 += res;
+                    counter += 1;
+
                     if (counter % 100 == 0)
                     {
-                        Message item = this.Messages.FirstOrDefault(i => i.Guid.toString() == guid.toString());
-                        if (item != null)
-                        {
-                            item.Text = text;
-                        }
+                        this.UpdateTextMessage(guid, text2);
                     }
                 }
 
-                //Messages.Add(message);
+                this.UpdateTextMessage(guid, text2); 
 
             }
             catch (System.Security.Authentication.AuthenticationException)
@@ -126,10 +133,21 @@ namespace AddInAskChatGPT
                 {
                     Title = "AddIn Ask ChatGPT",
                     Message = "Response available from ChatGPT",
-                    ImageUrl = @"pack://application:,,,/ArcGIS.Desktop.Resources;component/Images/LayerMasking32.png"
+                    ImageSource = (ImageSource)System.Windows.Application.Current.Resources["ChatGPT32"]
                 });
             }
 
+        }
+
+        private void UpdateTextMessage(Guid guid, string text)
+        {
+            Message item = this.Messages.FirstOrDefault(i => i.Guid.ToString() == guid.ToString());
+            if (item != null)
+            {
+                item.Text = text;
+            }         
+            this.Messages.Remove(item);
+            this.Messages.Add(item);
         }
 
         public void ClearChat()
